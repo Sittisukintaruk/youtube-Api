@@ -74,6 +74,7 @@ select {
 }
 :root {
   --color-primary-darkdeep: #3a3939;
+  --color-primary-dark: #313030;
   --color-primary-lightdark: #424242;
   --font-color-while: #dbdbdb;
 }
@@ -88,14 +89,15 @@ body {
 }
 
 nav {
-  max-width: 100%;
-  height: 100px;
-  background-color: var(--color-primary-darkdeep);
+  width: 100%;
+  height: 80px;
+  background-color: var(--color-primary-dark);
   border: none;
   display: flex;
   align-items: center;
   padding: 10px 80px;
-  position: sticky;
+  position: fixed;
+  z-index: 999;
 }
 
 .icon-ground {
@@ -159,8 +161,8 @@ nav {
 
 .icon-item img.circle-imge {
   position: absolute;
-  width: calc(100% - 40%);
-  height: calc(100% - 20%);
+  width: calc(100% - 50%);
+  height: calc(100% - 25%);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -176,10 +178,13 @@ main {
   height: 100%;
   padding-top: 40px;
   overflow: visible;
+  z-index: 1;
 }
 
 .group-video {
   width: 80%;
+  padding-top: 40px;
+  padding-bottom: 55px;
   height: 100%;
   margin: 0 auto;
   display: grid;
@@ -187,9 +192,7 @@ main {
   grid-template-rows: auto;
   grid-auto-rows: 400px;
   gap: 30px;
-  
   overflow: visible;
-  padding-bottom: 25px;
 }
 
 .video-card {
@@ -204,15 +207,17 @@ main {
   user-select: none;
   transition: all 0.1s ease;
   border-radius: 5px;
+  
 }
 
 .video-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 
 
+
 .video-card:active {
-  transform: translateY(5px);
+  transform: translateY(3px);
 }
 
 
