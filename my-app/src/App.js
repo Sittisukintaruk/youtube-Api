@@ -3,14 +3,11 @@ import Header from "./componet/Header";
 import Mainpage from "./componet/Mainpage";
 import { useState, useEffect } from "react";
 import data from "./json/Imgenav.json";
+import axios from "axios";
 
 function App() {
-  const [imgesicon, setImagesicon] = useState("");
-  // const showstate = () => {
-  //   console.table(imgesicon);
-  // };
+  const [imgesicon, setImagesicon] = useState([]);
 
-  // showstate();
   useEffect(() => {
     const socialMediaList = data.data;
     setImagesicon(socialMediaList);
@@ -18,11 +15,6 @@ function App() {
 
   return (
     <div className="Container">
-      {/* /* {imgesicon !== "undefined" ? (
-        <Header dataimgelish={imgesicon} />
-      ) : (
-        <div></div>
-      )} */}
       {imgesicon.length > 0 ? <Header dataimgelish={imgesicon} /> : <div></div>}
       <Mainpage />
     </div>
