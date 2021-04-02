@@ -8,28 +8,40 @@ import axios from "axios";
 
 function App() {
   const [imgesicon, setImagesicon] = useState([]);
-  const holodatabase = holodata.hololive;
+  const [videos, setVideos] = useState([]);
+  const [imgedata, setImgedata] = useState(holodata.hololive);
+  let arry = [
+    imgedata.rusia.channelId,
+    imgedata.Botan.channelId,
+    imgedata.Kanata.channelId,
+    imgedata.Aqua.channelId
+  ];
+
   useEffect(() => {
+    /*  const getRes = async () => {
+      const key = "AIzaSyCqmZfh3ujTcbc0m2Y_WLNKnZyQTrun0u8";
+      const holodatabase = holodata.hololive;
+      const channelID = holodatabase.Kanata.channelId;
+      const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&part=id&channelId=${channelID}&eventType=live&maxResults=2&type=video&key=${key}`;
+      return await axios
+        .get(url)
+        .then((value) => value.data)
+        .catch((err) => {
+          console.error(err);
+        });
+    };
     const fetch = async () => {
       const socialMediaList = data.data;
       setImagesicon(socialMediaList);
-      // const mydataholo = await getRes();
-      // console.log(mydataholo.items);
-    };
-    fetch();
-  }, []);
+      const mydataholo = await getRes();
+      mydataholo.items.length > 0 ? setVideos(mydataholo.items[0].id.videoId)
+        : console.log("done have a data");
+    }; */
 
-  const getRes = () => {
-    const key = "AIzaSyCqmZfh3ujTcbc0m2Y_WLNKnZyQTrun0u8";
-    const channelID = holodatabase.Botan.channelId;
-    const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&part=id&channelId=${channelID}A&eventType=live&maxResults=2&type=video&key=${key}`;
-    return axios
-      .get(url)
-      .then((value) => value.data)
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+    const socialMediaList = data.data;
+    setImagesicon(socialMediaList);
+    // fetch();
+  }, []);
 
   return (
     <div className="Container">
