@@ -12,7 +12,7 @@
                     "liveBroadcastContent": "",
                     "thumbnails": {
                         "high": {
-                            "url": "",
+                            "url": "https://i.ytimg.com/vi/kXToGY7Bcw8/hqdefault_live.jpg",
                             "width": 0,
                             "height": 0
                         }
@@ -82,3 +82,4 @@
         }
     }
 }
+
