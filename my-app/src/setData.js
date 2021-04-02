@@ -1,4 +1,3 @@
-import React from "react";
 import holodata from "./json/hololive.json";
 
 const setData = () => {
