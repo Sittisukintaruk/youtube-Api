@@ -5,7 +5,6 @@ const Header = ({ dataimgelish }) => {
   return (
     <nav>
       <div className="icon-ground">
-
         {dataimgelish.map((value) => (
           <Icons
             key={value.id}
