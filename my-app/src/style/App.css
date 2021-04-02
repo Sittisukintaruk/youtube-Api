@@ -113,6 +113,7 @@ nav {
   position: relative;
   cursor: pointer;
   z-index: 2;
+ 
 }
 
 .icon-item:first-child {
@@ -160,6 +161,7 @@ nav {
   object-fit: cover;
   opacity: 0.5;
   z-index: 0;
+  border: 1px solid red;
 }
 
 .icon-item img.circle-imge {

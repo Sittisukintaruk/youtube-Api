@@ -5,13 +5,14 @@ const Header = ({ dataimgelish }) => {
   return (
     <nav>
       <div className="icon-ground">
-        {dataimgelish.map((value) => (
+        {dataimgelish.map((value,number) => (
           <Icons
-            key={value.id}
-            imgMainSrc={value.img.imgMain}
-            imgCircle={value.img.imgCircle}
+            key={number}
+            imgMainSrc={value.data.thumbnails}
+            imgCircle={value.data.thumbnails}
           />
         ))}
+        {console.log(dataimgelish)}
       </div>
     </nav>
   );
