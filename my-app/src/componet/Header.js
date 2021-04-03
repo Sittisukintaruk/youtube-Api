@@ -12,7 +12,7 @@ const Header = ({ dataimgelish }) => {
             imgCircle={value.data.thumbnails}
           />
         ))}
-        {console.log(dataimgelish)}
+        {/* {console.log(dataimgelish)} */}
       </div>
     </nav>
   );
