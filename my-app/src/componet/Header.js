@@ -8,8 +8,8 @@ const Header = ({ dataimgelish }) => {
         {dataimgelish.map((value,number) => (
           <Icons
             key={number}
-            imgMainSrc={value.data.thumbnails}
-            imgCircle={value.data.thumbnails}
+            imgMainSrc={value.thumbnails}
+            imgCircle={value.thumbnails}
           />
         ))}
         {/* {console.log(dataimgelish)} */}
