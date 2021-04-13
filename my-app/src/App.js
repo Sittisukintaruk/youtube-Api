@@ -10,17 +10,22 @@ function App() {
   //?ถ้ามีการ live จะบันทึกและเก็บไว้ใน array objcet ที่สร้างใหม่
   // array object จะประกอบด้วยรายละเอียดช่องและวิดีโอที่กำลัง live
   const [videos, setVideos] = useState(dataset.hololive);
-
-
-  const checkLive = async () => {
-    const apiKey = process.env.REACT_APP_YOUTOUBE_API;
-    console.log(apiKey);
+  const bota = {
+    channelTitle: "Botan Ch.獅白ぼたん",
+    name: "Botan",
+    channelId: "UCUKD-uaobj9jiqB-VXt71mA",
+    thumbnails:
+      "https://yt3.ggpht.com/ytc/AAUvwngRC-JqguPnj9ljVH3UulyfdlyQzLYzLeSrhvD6=s800-c-k-c0x00ffffff-no-rj",
   };
 
   useEffect(() => {
+    const checkLive = async () => {
+      const apiKey = process.env.REACT_APP_YOUTOUBE_API;
+      setVideos([...videos,bota]);
+      console.log(apiKey);
+    };
     checkLive();
-    console.log(videos);
-  }, [videos]);
+  }, []);
 
   return (
     <div className="Container">
