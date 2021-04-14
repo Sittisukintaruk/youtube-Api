@@ -37,20 +37,21 @@ function App() {
         const dataapi = await axios.get(url);
         const channel = dataview.find((res) => res.channelId === value);
         channel.liveBroadcastContent = !channel.liveBroadcastContent;
-        dataapi.data[0].items.length > 0
-          ? setlist(dataapi.data[0].items[0], channel)
-          : console.log("no data");
+        if (dataapi.data.length > 0) {
+          dataapi.data[0].items.length > 0
+            ? setlist(dataapi.data[0].items[0], channel)
+            : console.log("no data");
+        }
       });
     };
-    const data = ["UCdyqAaZDKHXg4Ahi7VENThQ", "UCUKD-uaobj9jiqB-VXt71mA"];
+    const data = videos.map((value) => value.channelId);
     fecteApi(data);
-
     return () => {};
   }, []);
 
   return (
     <div className="Container">
-       <Header dataimgelish={listlives} />
+      <Header dataimgelish={listlives} />
       <Mainpage />
     </div>
   );
