@@ -20,43 +20,8 @@ function App() {
   const checkLive = () => {
     const apiKey = process.env.REACT_APP_YOUTOUBE_API;
     let Url;
-    // setVideos([...videos,bota]);
-    videos.map(async (value, number) => {
-      // Url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${value.channelId}&eventType=live&maxResults=1&order=date&type=video&key=${apiKey}`;
-      Url = "http://localhost:3004/hololive";
-      axios
-        .get(Url)
-        .then(
-          (res) =>
-            res.data[number].channelTitle === value.channelTitle &&
-            res.data[number]
-        )
-        .then((re) => array.push(re))
-        .catch((e) => console.log(e));
-    });
-    setListLives(array);
-    //   .then((res) =>
-    //   res.data.items.length > 0
-    //     ? res.data.items[0]
-    //     : console.log("no video live now!")
-    // )
-    // .then((item) => ({
-    //   videoID: value.channelTitle,
-    //   channalName: value.channelTitle,
-    //   channalThumbnails: value.thumbnails,
-    //   videoThumbnails: value.channelTitle,
-    //   liveStartAt: value.channelTitle,
-    // }))
-    // .catch((e) => console.log(e));
-
-    // const newArray = videos.map((value) => ({
-    //   videoID: value.channelId,
-    //   channalName: value.channelTitle,
-    //   channalThumbnails: value.thumbnails,
-    //   videoThumbnails: value.thumbnails,
-    //   liveStartAt: value.name,
-    // }));
-    // setListLives(newArray);
+    Url = "http://localhost:3004/hololive";
+    // setVideos([...{videos,bota]);
   };
 
   return (
