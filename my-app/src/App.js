@@ -13,16 +13,12 @@ function App() {
 
   const [videos, setVideos] = useState(dataset.hololive);
   const [listlives, setListLives] = useState([]);
-  let array = [];
-  useEffect(() => {
-    checkLive();
-  }, []);
-  const checkLive = () => {
-    const apiKey = process.env.REACT_APP_YOUTOUBE_API;
-    let Url;
-    Url = "http://localhost:3004/hololive";
-    // setVideos([...{videos,bota]);
-  };
+  const apiKey = process.env.REACT_APP_YOUTOUBE_API;
+
+  
+
+
+
 
   return (
     <div className="Container">
