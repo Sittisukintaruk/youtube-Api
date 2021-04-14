@@ -1,5 +1,6 @@
 import React from "react";
 import Icons from "./Icons";
+import PropTypes from "prop-types";
 
 const Header = ({ dataimgelish }) => {
   const showdata = () => {
@@ -10,7 +11,7 @@ const Header = ({ dataimgelish }) => {
         imgCircle={value.thumbnails}
       />
     ));
-    return show
+    return show;
   };
 
   return (
@@ -21,6 +22,10 @@ const Header = ({ dataimgelish }) => {
       </div>
     </nav>
   );
+};
+
+Header.propTypes = {
+  dataimgelish: PropTypes.array.isRequired,
 };
 
 export default Header;

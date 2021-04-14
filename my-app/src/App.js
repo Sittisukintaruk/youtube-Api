@@ -28,7 +28,7 @@ function App() {
         title: title,
       };
       art.push(channale);
-      setListLives(art);
+      setListLives([...art]);
     };
     const fecteApi = (channaleId = []) => {
       let dataview = dataset.hololive;
@@ -40,9 +40,7 @@ function App() {
         dataapi.data[0].items.length > 0
           ? setlist(dataapi.data[0].items[0], channel)
           : console.log("no data");
-          
       });
-      console.log(art);
     };
     const data = ["UCdyqAaZDKHXg4Ahi7VENThQ", "UCUKD-uaobj9jiqB-VXt71mA"];
     fecteApi(data);
@@ -52,7 +50,7 @@ function App() {
 
   return (
     <div className="Container">
-      {listlives.length > 0 && <Header dataimgelish={listlives} />}
+       <Header dataimgelish={listlives} />
       <Mainpage />
     </div>
   );
