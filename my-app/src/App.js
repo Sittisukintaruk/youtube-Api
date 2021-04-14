@@ -10,15 +10,26 @@ function App() {
   //!หาก่อนว่า api get ได้มีช่องที่กำลัง live อยู่
   //?ถ้ามีการ live จะบันทึกและเก็บไว้ใน array objcet ที่สร้างใหม่
   // array object จะประกอบด้วยรายละเอียดช่องและวิดีโอที่กำลัง live
+  // const apiKey = process.env.REACT_APP_YOUTOUBE_API;
 
   const [videos, setVideos] = useState(dataset.hololive);
   const [listlives, setListLives] = useState([]);
-  const apiKey = process.env.REACT_APP_YOUTOUBE_API;
 
-  
-
-
-
+  useEffect(() => {
+    const fecteApi = async () => {
+      const data = await axios.get(
+        "http://localhost:3004/hololive?id=UCdyqAaZDKHXg4Ahi7VENThQ"
+      );
+    const livevideo = data.data[0].items[0];
+    const id = livevideo.id.videoId
+    const thumbnails = livevideo.snippet.thumbnails.high.url;
+    console.log(livevideo);
+    console.log(id);
+    console.log(thumbnails);
+    
+    };
+    fecteApi();
+  }, []);
 
   return (
     <div className="Container">
