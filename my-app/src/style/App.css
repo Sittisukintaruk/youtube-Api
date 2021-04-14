@@ -112,7 +112,6 @@ nav {
 
 .icon-item {
   height: 100%;
-  
   max-width: 120px;
   position: relative;
   cursor: pointer;
@@ -162,9 +161,9 @@ nav {
 .icon-item > img.main-icon {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   opacity: 0.5;
-  z-index: 0;
+  z-index: -1;
 }
 
 .icon-item img.circle-imge {
@@ -300,13 +299,8 @@ nav {
     min-height: 120px;
     padding: 10px 5px;
   }
- 
 
   .video-titel {
     font-size: 20px;
   }
-  
-  
-  
-
 }
