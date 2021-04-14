@@ -15,25 +15,39 @@ function App() {
   const [videos, setVideos] = useState(dataset.hololive);
   const [listlives, setListLives] = useState([]);
 
+  let dataview = dataset.hololive;
   useEffect(() => {
-    const fecteApi = async () => {
-      const data = await axios.get(
-        "http://localhost:3004/hololive?id=UCdyqAaZDKHXg4Ahi7VENThQ"
-      );
-    const livevideo = data.data[0].items[0];
-    const id = livevideo.id.videoId
-    const thumbnails = livevideo.snippet.thumbnails.high.url;
-    console.log(livevideo);
-    console.log(id);
-    console.log(thumbnails);
-    
+    const setlist = (value, channale) => {
+      const livevideo = value;
+      const id = livevideo.id.videoId;
+      const thumbnails = livevideo.snippet.thumbnails.high.url;
+      const title = livevideo.snippet.title;
+      channale.video = {
+        id: id,
+        thumbnails: thumbnails,
+        title: title,
+      };
+      listlives.length > 0
+        ? setListLives([...listlives, channale])
+        : setListLives([channale]);
     };
-    fecteApi();
+    const fecteApi = async (channaleId) => {
+      const data = await axios.get(
+        `http://localhost:3004/hololive?id=${channaleId}`
+      );
+      const channel = dataview.find((res) => res.channelId === channaleId);
+      channel.liveBroadcastContent = !channel.liveBroadcastContent;
+      data.data[0].items.length > 0
+        ? setlist(data.data[0].items[0], channel)
+        : console.log("no data");
+    };
+
+    fecteApi("UCdyqAaZDKHXg4Ahi7VENThQ");
   }, []);
 
   return (
     <div className="Container">
-      <Header dataimgelish={videos} />
+      <Header dataimgelish={listlives} />
       {listlives.length > 0 && console.log(listlives)}
       <Mainpage />
     </div>
