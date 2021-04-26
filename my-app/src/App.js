@@ -38,9 +38,6 @@ function App() {
         const dataapi = await axios.get(url);
         const channel = dataview.find((res) => res.channelId === value);
         if (dataapi.data.length > 0) {
-          // dataapi.data[0].items.length > 0
-          //   ? art.push(setlist(dataapi.data[0].items[0], channel))
-          //   : console.log(`id: ${value} is not steam`);
           if (dataapi.data[0].items.length > 0) {
             const dataformath =  setlist(dataapi.data[0].items[0], channel);
             arts.push(dataformath);
