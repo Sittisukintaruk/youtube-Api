@@ -12,7 +12,6 @@ function App() {
   // array object จะประกอบด้วยรายละเอียดช่องและวิดีโอที่กำลัง live
   // const apiKey = process.env.REACT_APP_YOUTOUBE_API;
 
-  const [videos, setVideos] = useState(dataset.hololive);
   const [listlives, setListLives] = useState([]);
 
   useEffect(() => {
@@ -44,7 +43,7 @@ function App() {
         }
       });
     };
-    const data = videos.map((value) => value.channelId);
+    const data = dataset.hololive.map((value) => value.channelId);
     fecteApi(data);
     return () => {};
   }, []);
