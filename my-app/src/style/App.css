@@ -57,21 +57,7 @@ select {
   font: inherit;
 }
 
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
 :root {
   --color-primary-darkdeep: #3a3939;
   --color-primary-dark: #313030;
@@ -124,7 +110,7 @@ nav {
 }
 
 .icon-item:before {
-  content: "beer fah";
+  content: attr(data-line);
   position: absolute;
   opacity: 0.5;
   visibility: hidden;
@@ -142,9 +128,6 @@ nav {
   transition: transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.icon-item:hover img.circle-imge {
-  border-color: #90ff72;
-}
 .icon-item:hover:before {
   opacity: 1;
   visibility: visible;
@@ -165,6 +148,18 @@ nav {
   opacity: 0.5;
   z-index: -1;
 }
+.active {
+  border: 2px solid #90ff72;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+.unactive {
+  border: 2px solid hsl(0, 0%, 0%);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.icon-item:hover img.circle-imge {
+  border-color: #90ff72;
+}
 
 .icon-item img.circle-imge {
   position: absolute;
@@ -172,12 +167,12 @@ nav {
   height: 70%;
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -50%);
   border-radius: 50%;
   object-fit: cover;
   z-index: 999;
   transition: all 200ms ease;
-  border: 2px solid black;
 }
 
 .Main {
@@ -272,7 +267,7 @@ nav {
   font-size: 22px;
 }
 
-@media screen and (max-width: 982px) {
+@media only screen and (max-width: 968px) {
   .group-video {
     width: 90%;
     grid-template-columns: 1fr 1fr;
@@ -283,24 +278,34 @@ nav {
   }
 }
 
-@media screen and (max-width: 648px) {
+@media only screen and (max-width: 648px) {
   .group-video {
     grid-template-columns: 1fr;
     padding-bottom: 55px;
-    grid-auto-rows: minmax(24rem, 348px);
-  }
-  .icon-item img.circle-imge {
-    width: 70%;
-    height: 70%;
   }
 
   nav {
     width: 100%;
     min-height: 120px;
-    padding: 10px 5px;
+    padding: 10px 3rem;
   }
 
   .video-titel {
     font-size: 20px;
+  }
+
+  .icon-item img.circle-imge {
+    width: 60%;
+    height: 60%;
+  
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+  .icon-item img.circle-imge {
+    width: 60%;
+    height: 55%;
+  
   }
 }

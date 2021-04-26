@@ -9,6 +9,7 @@ const Header = ({ dataimgelish }) => {
         key={number}
         imgMainSrc={value.video.thumbnails}
         imgCircle={value.thumbnails}
+        titile = {value.channelTitle}
       />
     ));
     return show;
