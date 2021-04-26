@@ -15,36 +15,45 @@ function App() {
   const [listlives, setListLives] = useState([]);
 
   useEffect(() => {
-    let art = [];
+    let arts = [];
+    const dataview = dataset.hololive;
+    const data = dataview.map((value) => value.channelId);
     const setlist = (value, channale) => {
       const livevideo = value;
       const id = livevideo.id.videoId;
       const thumbnails = livevideo.snippet.thumbnails.high.url;
       const title = livevideo.snippet.title;
+      channale.liveBroadcastContent = !channale.liveBroadcastContent;
       channale.video = {
         id: id,
         thumbnails: thumbnails,
         title: title,
       };
-      art.push(channale);
-      setListLives([...art]);
+      return channale;
     };
+
     const fecteApi = (channaleId = []) => {
-      let dataview = dataset.hololive;
       channaleId.map(async (value) => {
         const url = `http://localhost:3004/hololive?id=${value}`;
         const dataapi = await axios.get(url);
         const channel = dataview.find((res) => res.channelId === value);
-        channel.liveBroadcastContent = !channel.liveBroadcastContent;
         if (dataapi.data.length > 0) {
-          dataapi.data[0].items.length > 0
-            ? setlist(dataapi.data[0].items[0], channel)
-            : console.log("no data");
+          // dataapi.data[0].items.length > 0
+          //   ? art.push(setlist(dataapi.data[0].items[0], channel))
+          //   : console.log(`id: ${value} is not steam`);
+          if (dataapi.data[0].items.length > 0) {
+            const dataformath =  setlist(dataapi.data[0].items[0], channel);
+            arts.push(dataformath);
+            setListLives([...arts])
+          } else {
+            console.log(`id: ${value} is not steam`);
+          }
         }
       });
     };
-    const data = dataset.hololive.map((value) => value.channelId);
+
     fecteApi(data);
+
     return () => {};
   }, []);
 
