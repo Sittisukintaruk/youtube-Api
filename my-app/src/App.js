@@ -10,8 +10,9 @@ function App() {
   //!หาก่อนว่า api get ได้มีช่องที่กำลัง live อยู่
   //?ถ้ามีการ live จะบันทึกและเก็บไว้ใน array objcet ที่สร้างใหม่
   // array object จะประกอบด้วยรายละเอียดช่องและวิดีโอที่กำลัง live
+  //?ถ้าเกิดคลิกที่จะทำการเพิ่ม class css active แสดงสถา่นะว่า "ถูกคลิก" มีกรอบสีเขียว
   // const apiKey = process.env.REACT_APP_YOUTOUBE_API;
-
+    
   const [listlives, setListLives] = useState([]);
 
   useEffect(() => {
