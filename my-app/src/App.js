@@ -70,12 +70,12 @@ function App() {
 
   return (
     <div className="Container">
-      {videos.length > 0 && console.log(videos)}
       <Header
         dataimgelish={listlives}
         handlerOnclick={[handlerClick, handlerOncancle]}
       />
-      <Mainpage />
+       <Mainpage videos = {videos}/> 
+      
     </div>
   );
 }
