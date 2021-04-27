@@ -58,11 +58,12 @@ function App() {
   }, []);
 
   const handlerClick = (videoId) => {
-    setVideos([...videos,videoId]);
+    const channelfilter = listlives.filter(value => value.channelId === videoId);
+    setVideos([...videos,...channelfilter]);
   };
 
   const handlerOncancle = (videoId) => {
-    const data = videos.filter((value) => value !== videoId );
+    const data = videos.filter((value) => value.channelId !== videoId );
     setVideos(data);
     
   };
@@ -70,7 +71,6 @@ function App() {
   return (
     <div className="Container">
       {videos.length > 0 && console.log(videos)}
-
       <Header
         dataimgelish={listlives}
         handlerOnclick={[handlerClick, handlerOncancle]}
