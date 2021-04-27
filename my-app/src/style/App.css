@@ -158,7 +158,8 @@ nav {
 }
 
 .icon-item:hover img.circle-imge {
-  border-color: #90ff72;
+  box-shadow: 0px 0px 4px 2px  rgba(144, 255, 114, 0.25),
+  0px 0px 6px 4px rgba(144, 255, 114, 0.35) ;
 }
 
 .icon-item img.circle-imge {
@@ -212,7 +213,7 @@ nav {
 }
 
 .video-card:hover .video img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .video {
