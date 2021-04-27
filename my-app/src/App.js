@@ -11,9 +11,12 @@ function App() {
   //?ถ้ามีการ live จะบันทึกและเก็บไว้ใน array objcet ที่สร้างใหม่
   // array object จะประกอบด้วยรายละเอียดช่องและวิดีโอที่กำลัง live
   //?ถ้าเกิดคลิกที่จะทำการเพิ่ม class css active แสดงสถา่นะว่า "ถูกคลิก" มีกรอบสีเขียว
+  //?และจะทำการเพิ่มState แบบarray เช้ามา โดยข้อมูลที่ถูกเพิ่มจะอิงจาก channelid ของช่องที่ถูกกด
+  //?ทำการhandler เมื่อ click และ เมื่อกดซ้ำจะเป็นการ unactive..
   // const apiKey = process.env.REACT_APP_YOUTOUBE_API;
-    
+
   const [listlives, setListLives] = useState([]);
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     let arts = [];
@@ -40,9 +43,9 @@ function App() {
         const channel = dataview.find((res) => res.channelId === value);
         if (dataapi.data.length > 0) {
           if (dataapi.data[0].items.length > 0) {
-            const dataformath =  setlist(dataapi.data[0].items[0], channel);
+            const dataformath = setlist(dataapi.data[0].items[0], channel);
             arts.push(dataformath);
-            setListLives([...arts])
+            setListLives([...arts]);
           } else {
             console.log(`id: ${value} is not steam`);
           }
@@ -51,13 +54,27 @@ function App() {
     };
 
     fecteApi(data);
-
     return () => {};
   }, []);
 
+  const handlerClick = (videoId) => {
+    setVideos([...videos,videoId]);
+  };
+
+  const handlerOncancle = (videoId) => {
+    const data = videos.filter((value) => value !== videoId );
+    setVideos(data);
+    
+  };
+
   return (
     <div className="Container">
-      <Header dataimgelish={listlives} />
+      {videos.length > 0 && console.log(videos)}
+
+      <Header
+        dataimgelish={listlives}
+        handlerOnclick={[handlerClick, handlerOncancle]}
+      />
       <Mainpage />
     </div>
   );

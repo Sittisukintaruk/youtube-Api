@@ -2,14 +2,18 @@ import React from "react";
 import Icons from "./Icons";
 import PropTypes from "prop-types";
 
-const Header = ({ dataimgelish }) => {
+const Header = ({ dataimgelish, handlerOnclick }) => {
+  const [handlerClick, handlerOncancle] = handlerOnclick;
   const showdata = () => {
     const show = dataimgelish.map((value, number) => (
       <Icons
         key={number}
         imgMainSrc={value.video.thumbnails}
         imgCircle={value.thumbnails}
-        titile = {value.channelTitle}
+        titile={value.channelTitle}
+        channelID={value.channelId}
+        onclick={handlerClick}
+        oncancle={handlerOncancle}
       />
     ));
     return show;
