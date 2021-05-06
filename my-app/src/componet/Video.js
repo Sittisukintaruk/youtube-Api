@@ -5,12 +5,7 @@ import Svgcolck from "../img/clarity_alarm-clock-line.svg";
 const Video = ({ thumbnails, title, id }) => {
   return (
     <>
-      <div
-        className="video-card"
-        onClick={() => {
-          console.log(id);
-        }}
-      >
+      <div className="video-card" >
         <a href={`https://www.youtube.com/watch?v=${id}`} target="_blank" style = {{textDecoration : "none"}}>
           <div className="video">
             <img src={thumbnails} alt={title} />
