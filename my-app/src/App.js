@@ -17,7 +17,15 @@ function App() {
 
   const [listlives, setListLives] = useState([]);
   const [videos, setVideos] = useState([]);
-
+  const MainEmtpy = () => {
+    return (
+      <div className="Main">
+        <div className="group-video">
+        </div>
+      </div>
+    );
+  }
+  
   useEffect(() => {
     let arts = [];
     const dataview = dataset.hololive;
@@ -58,24 +66,28 @@ function App() {
   }, []);
 
   const handlerClick = (videoId) => {
-    const channelfilter = listlives.filter(value => value.channelId === videoId);
-    setVideos([...videos,...channelfilter]);
+    const channelfilter = listlives.filter(
+      (value) => value.channelId === videoId
+    );
+    setVideos([...videos, ...channelfilter]);
   };
 
   const handlerOncancle = (videoId) => {
-    const data = videos.filter((value) => value.channelId !== videoId );
-    setVideos(data);
-    
+    if (videos.length > 0) {
+      const data = videos.filter((value) => value.channelId !== videoId);
+      setVideos(data);
+    }
+    else {
+      return 
+    }
   };
 
   return (
     <div className="Container">
-      <Header
-        dataimgelish={listlives}
-        handlerOnclick={[handlerClick, handlerOncancle]}
-      />
-       <Mainpage videos = {videos}/> 
-      
+     
+      {listlives.length > 0 ? <Header dataimgelish = {listlives} handlerOnclick={[handlerClick, handlerOncancle]} /> :  <nav/> }
+      {videos.length > 0 ? <Mainpage videos={videos}/> : <MainEmtpy/> }
+       
     </div>
   );
 }
