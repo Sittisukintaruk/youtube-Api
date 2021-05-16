@@ -6,7 +6,7 @@ const Video = ({ thumbnails, title, id }) => {
   return (
     <>
       <div className="video-card" >
-        <a href={`https://www.youtube.com/watch?v=${id}`} target="_blank" style = {{textDecoration : "none"}}>
+        <a href={`https://www.youtube.com/watch?v=${id}`} rel="noreferrer"  target="_blank" style = {{textDecoration : "none"}}>
           <div className="video">
             <img src={thumbnails} alt={title} />
           </div>

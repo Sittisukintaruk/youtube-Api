@@ -14,54 +14,27 @@ function App() {
   //?และจะทำการเพิ่มState แบบarray เช้ามา โดยข้อมูลที่ถูกเพิ่มจะอิงจาก channelid ของช่องที่ถูกกด
   //?ทำการhandler เมื่อ click และ เมื่อกดซ้ำจะเป็นการ unactive..
   // const apiKey = process.env.REACT_APP_YOUTOUBE_API;
+  // setListLives([...arts]);
 
   const [listlives, setListLives] = useState([]);
   const [videos, setVideos] = useState([]);
   const MainEmtpy = () => {
     return (
       <div className="Main">
-        <div className="group-video">
-        </div>
+        <div className="group-video"></div>
       </div>
     );
-  }
-  
+  };
+
   useEffect(() => {
-    let arts = [];
-    const dataview = dataset.hololive;
-    const data = dataview.map((value) => value.channelId);
-    const setlist = (value, channale) => {
-      const livevideo = value;
-      const id = livevideo.id.videoId;
-      const thumbnails = livevideo.snippet.thumbnails.high.url;
-      const title = livevideo.snippet.title;
-      channale.liveBroadcastContent = !channale.liveBroadcastContent;
-      channale.video = {
-        id: id,
-        thumbnails: thumbnails,
-        title: title,
-      };
-      return channale;
+    const fecteApi = () => {
+      const url = "http://localhost:3000/hololive";
+      axios.get(url).then((result) => setListLives(result.data));
+      
     };
 
-    const fecteApi = (channaleId = []) => {
-      channaleId.map(async (value) => {
-        const url = `http://localhost:3004/hololive?id=${value}`;
-        const dataapi = await axios.get(url);
-        const channel = dataview.find((res) => res.channelId === value);
-        if (dataapi.data.length > 0) {
-          if (dataapi.data[0].items.length > 0) {
-            const dataformath = setlist(dataapi.data[0].items[0], channel);
-            arts.push(dataformath);
-            setListLives([...arts]);
-          } else {
-            console.log(`id: ${value} is not steam`);
-          }
-        }
-      });
-    };
+    fecteApi();
 
-    fecteApi(data);
     return () => {};
   }, []);
 
@@ -76,18 +49,23 @@ function App() {
     if (videos.length > 0) {
       const data = videos.filter((value) => value.channelId !== videoId);
       setVideos(data);
-    }
-    else {
-      return 
+    } else {
+      return;
     }
   };
 
   return (
     <div className="Container">
-     
-      {listlives.length > 0 ? <Header dataimgelish = {listlives} handlerOnclick={[handlerClick, handlerOncancle]} /> :  <nav/> }
-      {videos.length > 0 ? <Mainpage videos={videos}/> : <MainEmtpy/> }
-       
+      {console.log(listlives)}
+      {listlives.length > 0 ? (
+        <Header
+          dataimgelish={listlives}
+          handlerOnclick={[handlerClick, handlerOncancle]}
+        />
+      ) : (
+        <nav />
+      )}
+      {videos.length > 0 ? <Mainpage videos={videos} /> : <MainEmtpy />}
     </div>
   );
 }
